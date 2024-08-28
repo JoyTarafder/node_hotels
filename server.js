@@ -22,6 +22,12 @@ const routerMenuItem = require('./routes/menuItemRoutes');
 app.use('/person', routerPerson);
 app.use('/menuitem', routerMenuItem);
 
+// db().then(() => {
+//   app.listen(port, () => {
+//     console.log(`App listening on port ${port}`);
+//   });
+// });
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

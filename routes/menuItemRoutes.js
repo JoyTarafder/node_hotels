@@ -9,7 +9,7 @@ router.post('/', async function (req, res) {
     try {
       await menuItem.save();
       res.send(menuItem);
-      console.log('Data Save');
+      console.log('MenuItem Data Save');
     } catch (error) {
       console.log(error);
       res.status(500).send({error: 'Internal server error'});
@@ -22,7 +22,7 @@ router.post('/', async function (req, res) {
 router.get('/', async (req, res) => {
     try {
       const menuitem = await MenuItem.find();
-      console.log('data fetched');
+      console.log('MenuItem data fetched');
       res.send(menuitem);
     } catch (error) {
       console.log(error);

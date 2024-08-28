@@ -8,7 +8,7 @@ router.post('/', async function (req, res) {
     try {
       const response = await person.save();
       res.status(200).json(response);
-      console.log('Data Save');
+      console.log('Person Data Save');
     } catch (error) {
       console.log(error);
       res.status(500).send({error: 'Internal server error'});
@@ -19,7 +19,7 @@ router.post('/', async function (req, res) {
 router.get('/', async (req, res) => {
     try {
       const person = await Person.find();
-      console.log('data fetched');
+      console.log('Person data fetched');
       res.send(person);
     } catch (error) {
       console.log(error);
@@ -50,7 +50,7 @@ router.put('/:id', async (req, res) => {
     try {
       const person = await Person.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
       res.send(person);
-      console.log('Data updated');
+      console.log('Data updated : ', req.params.id);
 
       if(!person){
           return res.status(404).json({error: 'Person not found'})
@@ -72,7 +72,7 @@ router.delete('/:id', async (req, res) => {
     }
 
     res.status(200).json({ message: 'Person deleted successfully' });
-    console.log('Data deleted');
+    console.log('Data deleted :', req.params.id);
   } catch (error) {
     console.log(error);
     res.status(500).send({ error: 'Internal server error' });
