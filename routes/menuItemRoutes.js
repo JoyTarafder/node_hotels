@@ -5,17 +5,18 @@ const MenuItem = require('./../models/menuitem'); // Ensure this import is corre
 
 // MenuItem Post Function
 router.post('/', async function (req, res) {
-    const menuItem = new MenuItem(req.body);
-    try {
+  const menuItem = new MenuItem(req.body);
+  try {
       await menuItem.save();
       res.send(menuItem);
       console.log('MenuItem Data Save');
-    } catch (error) {
+  } catch (error) {
       console.log(error);
-      res.status(500).send({error: 'Internal server error'});
-    }
+      if (!res.headersSent) {
+          res.status(500).send({ error: 'Internal server error' });
+      }
   }
-);
+});
 
 // MenuItem Get Function
 

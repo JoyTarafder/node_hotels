@@ -4,7 +4,7 @@ const db = require('./db')
 
 
 const app = express();
-const port = 3000;
+const port = 3000; 
 
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
@@ -22,12 +22,17 @@ const routerMenuItem = require('./routes/menuItemRoutes');
 app.use('/person', routerPerson);
 app.use('/menuitem', routerMenuItem);
 
-// db().then(() => {
-//   app.listen(port, () => {
-//     console.log(`App listening on port ${port}`);
-//   });
-// });
 
+// Error handler
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  if (!res.headersSent) {
+      res.status(500).send({ error: 'Internal server error' });
+  }
+});
+
+
+// Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

@@ -55,7 +55,6 @@ router.put('/:id', async (req, res) => {
       if(!person){
           return res.status(404).json({error: 'Person not found'})
       }
-      res.status(200).json({message: 'person updated sucessfully'});
     } catch (error) {
       console.log(error);
       res.status(500).send({error: 'Internal server error'});
@@ -70,10 +69,9 @@ router.delete('/:id', async (req, res) => {
     if (!person) {
       return res.status(404).json({ error: 'Person not found' });
     }
-
-    res.status(200).json({ message: 'Person deleted successfully' });
     console.log('Data deleted :', req.params.id);
-  } catch (error) {
+  } 
+  catch (error) {
     console.log(error);
     res.status(500).send({ error: 'Internal server error' });
   }
