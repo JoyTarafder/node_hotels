@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-// const MONGO_URL = 'mongodb://localhost:27017/hotels' // Offline Database
-const MONGO_URL = 'mongodb+srv://joytarafder3:Own1234@cluster0.guejy.mongodb.net/';
+// const MONGO_URL = 'mongodb://localhost:27017/hotels' // LOCAL Database
+const mongo_URL = process.env.MONGO_URL;
 
 //Connect to the database
-mongoose.connect(MONGO_URL, {
+mongoose.connect(mongo_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   ssl: true, // Enable SSL/TLS  
@@ -18,5 +19,3 @@ db.once('open', () => {
 
 
 module.exports = db;
-
-// module.exports = db;

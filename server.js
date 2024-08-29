@@ -1,10 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const db = require('./db')
+const db = require('./db');
+require('dotenv').config();
 
 
 const app = express();
-const port = 3000; 
+const port = process.env.PORT || 3000; 
+
 
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
