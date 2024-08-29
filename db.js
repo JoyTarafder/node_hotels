@@ -7,7 +7,7 @@ const mongo_URL = process.env.MONGO_URL;
 //Connect to the database
 mongoose.connect(mongo_URL, {
   // useNewUrlParser: true,
-  useUnifiedTopology: true,
+  // useUnifiedTopology: true,
   ssl: true, // Enable SSL/TLS  
 });
 
