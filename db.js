@@ -2,12 +2,13 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 // const MONGO_URL = 'mongodb://localhost:27017/hotels' // LOCAL Database
-const mongo_URL = process.env.MONGO_URL;
+// const mongo_URL = process.env.MONGO_URL;
+const mongo_URL = 'mongodb+srv://joytarafder3:Own1234@cluster0.guejy.mongodb.net/';
 
 //Connect to the database
 mongoose.connect(mongo_URL, {
-  // useNewUrlParser: true,
-  // useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true, 
   ssl: true, // Enable SSL/TLS  
 });
 
