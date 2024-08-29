@@ -25,14 +25,6 @@ app.use('/person', routerPerson);
 app.use('/menuitem', routerMenuItem);
 
 
-// Error handler
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  if (!res.headersSent) {
-      res.status(500).send({ error: 'Internal server error' });
-  }
-});
-
 
 // Start the server
 app.listen(port, () => {
